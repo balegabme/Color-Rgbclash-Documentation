@@ -5,7 +5,7 @@ import { TokenPage } from "@/pages/economy/tokenPage";
 import { QuickGame } from "@/pages/games/quickGame";
 import { DrawAndEarn } from "@/pages/how-to-earn.tsx/drawAndEarn";
 import { PlayAndEarn } from "@/pages/how-to-earn.tsx/playAndEarn";
-import { Quickstart } from "@/pages/introduction/quickStart";
+import { Quickstart } from "@/pages/introduction/quickstart";
 import { ComingSoon } from "@/pages/misc/comingSoon";
 import { Ai } from "@/pages/technology/ai";
 import { SessonKeys } from "@/pages/technology/sessionKeys";
