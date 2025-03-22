@@ -17,7 +17,7 @@ export function Layout() {
             <Header />
           </div>
         </header>
-        <main className="p-4">
+        <main className="p-4 md:ml-24">
           <Outlet />
         </main>
       </SidebarInset>

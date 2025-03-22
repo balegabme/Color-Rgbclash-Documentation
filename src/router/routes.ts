@@ -1,50 +1,65 @@
+import { OfficialLinks } from "@/pages/community/officialLinks";
+import { EcoOverview } from "@/pages/economy/ecoOverview";
+import { HandmadeYieldBearingNfts } from "@/pages/economy/handmadeYieldBearingNfts";
+import { TokenPage } from "@/pages/economy/tokenPage";
+import { QuickGame } from "@/pages/games/quickGame";
+import { DrawAndEarn } from "@/pages/how-to-earn.tsx/drawAndEarn";
+import { PlayAndEarn } from "@/pages/how-to-earn.tsx/playAndEarn";
+import { Quickstart } from "@/pages/introduction/quickStart";
+import { ComingSoon } from "@/pages/misc/comingSoon";
+import { Ai } from "@/pages/technology/ai";
+import { SessonKeys } from "@/pages/technology/sessionKeys";
+import { SmartContracts } from "@/pages/technology/smartContracts";
+
 export const routes = {
   navMain: [
     {
-      title: "Getting Started",
-      items: [{ title: "Installation" }, { title: "Project Structure" }],
-    },
-    {
-      title: "Building Your Application",
+      title: "Introduction",
       items: [
-        { title: "Routing" },
-        { title: "Data Fetching" },
-        { title: "Rendering" },
-        { title: "Caching" },
-        { title: "Styling" },
-        { title: "Optimizing" },
-        { title: "Configuring" },
-        { title: "Testing" },
-        { title: "Authentication" },
-        { title: "Deploying" },
-        { title: "Upgrading" },
-        { title: "Examples" },
+        { title: "Quickstart", element: Quickstart },
+        { title: "Color's Solution", element: Quickstart },
+        { title: "Market fit", element: ComingSoon },
+        { title: "Roadmap", element: ComingSoon },
       ],
     },
     {
-      title: "API Reference",
+      title: "Economy",
       items: [
-        { title: "Components" },
-        { title: "File Conventions" },
-        { title: "Functions" },
-        { title: "next.config.js Options" },
-        { title: "CLI" },
-        { title: "Edge Runtime" },
+        { title: "Overview", element: EcoOverview },
+        { title: "Handmade yield bearing NFTs", element: HandmadeYieldBearingNfts },
+        { title: "Boosts", element: ComingSoon },
+        { title: "Seasons", element: ComingSoon },
+        { title: "Token", element: TokenPage },
+        { title: "NFT marketplace", element: ComingSoon },
       ],
     },
     {
-      title: "Architecture",
+      title: "How to earn",
       items: [
-        { title: "Accessibility" },
-        { title: "Fast Refresh" },
-        { title: "Next.js Compiler" },
-        { title: "Supported Browsers" },
-        { title: "Turbopack" },
+        { title: "Play and earn (Active)", element: PlayAndEarn },
+        { title: "Draw and earn (Passive)", element: DrawAndEarn },
+      ],
+    },
+    {
+      title: "Games",
+      items: [
+        { title: "Quick Game", element: QuickGame },
+        { title: "Duel", element: ComingSoon },
+        { title: "Single Player", element: ComingSoon },
+      ],
+    },
+    {
+      title: "Technology",
+      items: [
+        { title: "AI", element: Ai },
+        { title: "Smart Contracts", element: SmartContracts },
+        { title: "Session Key", element: SessonKeys },
+        { title: "Crosschain NFTs", element: ComingSoon },
       ],
     },
     {
       title: "Community",
-      items: [{ title: "Contribution Guide" }],
+      items: [{ title: "Official links", element: OfficialLinks }],
     },
   ],
 };

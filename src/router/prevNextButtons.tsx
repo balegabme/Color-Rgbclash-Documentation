@@ -9,7 +9,6 @@ interface PrevNextButtonsProps {
 }
 
 const PrevNextButtons = ({ previousHref, previousTitle, nextHref, nextTitle }: PrevNextButtonsProps) => {
-  // Initialize active state to highlight the correct link.
   return (
     <div className="flex justify-center mt-6 gap-4">
       <Link

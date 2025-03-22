@@ -54,7 +54,11 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
                       const subRoute = `/${slugify(group.title)}/${slugify(subItem.title)}`;
                       return (
                         <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild isActive={active === subRoute}>
+                          <SidebarMenuSubButton
+                            asChild
+                            className={subItem.title.length > 24 ? "h-8" : undefined}
+                            isActive={active === subRoute}
+                          >
                             <Link to={subRoute}>{subItem.title}</Link>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
