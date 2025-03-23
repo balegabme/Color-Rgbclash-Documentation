@@ -10,6 +10,10 @@ import { routes } from "./routes";
 const documentationRoutes = routes.navMain.flatMap((group) => {
   const groupRoutes = [
     {
+      path: "/",
+      element: <Navigate to={`/${slugify(group.title)}/${slugify(group.items[0].title)}`} />,
+    },
+    {
       path: slugify(group.title),
       element: <Navigate to={`/${slugify(group.title)}/${slugify(group.items[0].title)}`} />,
     },

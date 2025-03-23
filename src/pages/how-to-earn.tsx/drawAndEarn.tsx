@@ -7,7 +7,7 @@ export const DrawAndEarn = function DrawAndEarn() {
       </p>
       <p className="mt-4">
         These NFTs can be staked in the NFT Pouch contract to become a part of the games' nft pool. Once an NFT is
-        staked and games are played it will earn passive income.
+        staked and games are played, it will earn passive income.
       </p>
       <h5 className="font-bold mt-4">Free mints</h5>
       <p className="mt-4">

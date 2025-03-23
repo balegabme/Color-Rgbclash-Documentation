@@ -3,8 +3,11 @@ import { EcoOverview } from "@/pages/economy/ecoOverview";
 import { HandmadeYieldBearingNfts } from "@/pages/economy/handmadeYieldBearingNfts";
 import { TokenPage } from "@/pages/economy/tokenPage";
 import { QuickGame } from "@/pages/games/quickGame";
+import { SinglePlayer } from "@/pages/games/singlePlayer";
 import { DrawAndEarn } from "@/pages/how-to-earn.tsx/drawAndEarn";
 import { PlayAndEarn } from "@/pages/how-to-earn.tsx/playAndEarn";
+import { Abstract } from "@/pages/introduction/abstract";
+import { MarketFit } from "@/pages/introduction/marketFit";
 import { Quickstart } from "@/pages/introduction/quickstart";
 import { ComingSoon } from "@/pages/misc/comingSoon";
 import { Ai } from "@/pages/technology/ai";
@@ -16,9 +19,9 @@ export const routes = {
     {
       title: "Introduction",
       items: [
+        { title: "Abstract", element: Abstract },
         { title: "Quickstart", element: Quickstart },
-        { title: "Color's Solution", element: Quickstart },
-        { title: "Market fit", element: ComingSoon },
+        { title: "Market fit", element: MarketFit },
         { title: "Roadmap", element: ComingSoon },
       ],
     },
@@ -45,7 +48,7 @@ export const routes = {
       items: [
         { title: "Quick Game", element: QuickGame },
         { title: "Duel", element: ComingSoon },
-        { title: "Single Player", element: ComingSoon },
+        { title: "Single Player", element: SinglePlayer },
       ],
     },
     {
