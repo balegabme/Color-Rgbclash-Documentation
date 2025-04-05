@@ -11,6 +11,7 @@ export const SmartContracts: React.FC = () => {
   const initialExpanded: Record<Chain, boolean> = {
     Monad: false,
     Sei: false,
+    Base: false,
     Sonic: false,
   };
 
