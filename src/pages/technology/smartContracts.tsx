@@ -2,19 +2,47 @@ import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
-type Chain = "Monad" | "Sei" | "Base" | "Sonic";
-type Contract = "ColorNft" | "ColorNftPouch" | "GroupGame" | "SingleGame";
+import { Chains, contractAddresses, Contracts, MultiGameVariant } from "./contracts";
+
+type Chain = keyof typeof Chains;
+type Contract = keyof typeof Contracts;
 
 export const SmartContracts: React.FC = () => {
   const initialExpanded: Record<Chain, boolean> = {
     Monad: false,
     Sei: false,
-    Base: false,
     Sonic: false,
   };
 
   const [expandedGroupGames, setExpandedGroupGames] = useState<Record<Chain, boolean>>(initialExpanded);
 
+  // Helper function to parse variant labels
+  const parseVariantLabel = (variant: MultiGameVariant): string => {
+    const [, players, priceCode] = variant.split("-");
+    const priceTier =
+      {
+        "100": "Low price",
+        "101": "Mid price",
+        "102": "High price",
+      }[priceCode] || `Price tier ${priceCode}`;
+
+    return `${players} player · ${priceTier}`;
+  };
+
+  // Helper to get contract address
+  const getContractAddress = (chain: Chain, contract: Contract): string | undefined => {
+    const chainId = Chains[chain];
+    return contractAddresses[chainId]?.[Contracts[contract]] as string | undefined;
+  };
+
+  // Helper to get GroupGame variant addresses
+  const getGroupGameVariantAddress = (chain: Chain, variant: MultiGameVariant): string | undefined => {
+    const chainId = Chains[chain];
+    const groupGameContracts = contractAddresses[chainId]?.[Contracts.GroupGame];
+    return typeof groupGameContracts === "object" ? groupGameContracts[variant] : undefined;
+  };
+
+  // Table styling
   const tableStyle: React.CSSProperties = {
     width: "100%",
     borderCollapse: "collapse",
@@ -32,79 +60,72 @@ export const SmartContracts: React.FC = () => {
     backgroundColor: "#f9f9f9",
   };
 
-  const chains: Array<Chain> = ["Monad", "Sei", "Base", "Sonic"];
-  const contracts: Array<Contract> = ["ColorNft", "ColorNftPouch", "SingleGame", "GroupGame"];
-  const groupGameTypes: Array<string> = ["Type1", "Type2", "Type3"];
-
-  const generateRandomAddress = (): string => {
-    return `0x${Math.random().toString(16).slice(2).padEnd(40, "0")}`;
-  };
-
-  const renderTable = (chain: Chain) => (
-    <table style={tableStyle}>
-      <thead>
-        <tr>
-          <th style={{ ...thTdStyle, ...headerStyle }}>Contract Name</th>
-          <th style={{ ...thTdStyle, ...headerStyle }}>Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contracts.map((contract) => (
-          <tr key={contract}>
-            <td style={thTdStyle}>{contract}</td>
-            <td style={thTdStyle}>
-              {contract === "GroupGame" ? (
-                <Button
-                  onClick={() =>
-                    setExpandedGroupGames((prev) => ({
-                      ...prev,
-                      [chain]: !prev[chain],
-                    }))
-                  }
-                >
-                  {expandedGroupGames[chain] ? "Hide Types" : "Show Types"}
-                </Button>
-              ) : (
-                generateRandomAddress()
-              )}
-            </td>
-          </tr>
-        ))}
-        {expandedGroupGames[chain] && (
-          <tr>
-            <td colSpan={2} style={thTdStyle}>
-              <table style={tableStyle}>
-                <thead>
-                  <tr>
-                    <th style={{ ...thTdStyle, ...headerStyle }}>GroupGame Type</th>
-                    <th style={{ ...thTdStyle, ...headerStyle }}>Address</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {groupGameTypes.map((type) => (
-                    <tr key={type}>
-                      <td style={thTdStyle}>{type}</td>
-                      <td style={thTdStyle}>{generateRandomAddress()}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        )}
-      </tbody>
-    </table>
-  );
-
   return (
     <div style={{ padding: "1rem", fontFamily: "Arial, sans-serif" }}>
       <h4 className="font-bold mb-4">Smart Contracts</h4>
-      {chains.map((chain) => (
-        <div key={chain} style={{ marginBottom: "2rem" }}>
-          <h5>{chain}</h5>
-          {renderTable(chain)}
-        </div>
-      ))}
+      {Object.keys(Chains)
+        .filter((chain) => isNaN(Number(chain)) && chain !== "Base")
+        .map((chain) => (
+          <div key={chain} style={{ marginBottom: "2rem" }}>
+            <h5>{chain}</h5>
+            <table style={tableStyle}>
+              <thead>
+                <tr>
+                  <th style={{ ...thTdStyle, ...headerStyle }}>Contract</th>
+                  <th style={{ ...thTdStyle, ...headerStyle }}>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.values(Contracts)
+                  .filter((contract) => contract !== Contracts.GroupGame)
+                  .map((contract) => (
+                    <tr key={contract}>
+                      <td style={thTdStyle}>{contract}</td>
+                      <td style={thTdStyle}>{getContractAddress(chain as Chain, contract as Contract) || "N/A"}</td>
+                    </tr>
+                  ))}
+                <tr>
+                  <td style={thTdStyle} colSpan={2}>
+                    <Button
+                      onClick={() =>
+                        setExpandedGroupGames((prev) => ({
+                          ...prev,
+                          [chain]: !prev[chain as Chain],
+                        }))
+                      }
+                    >
+                      {expandedGroupGames[chain as Chain] ? "Hide Group Games" : "Show Group Games"}
+                    </Button>
+                    {expandedGroupGames[chain as Chain] && (
+                      <table style={tableStyle}>
+                        <thead>
+                          <tr>
+                            <th style={{ ...thTdStyle, ...headerStyle }}>Game Type</th>
+                            <th style={{ ...thTdStyle, ...headerStyle }}>Address</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.values(MultiGameVariant)
+                            .map((variant) => ({
+                              label: parseVariantLabel(variant),
+                              address: getGroupGameVariantAddress(chain as Chain, variant),
+                            }))
+                            .filter(({ address }) => !!address)
+                            .map(({ label, address }) => (
+                              <tr key={label}>
+                                <td style={thTdStyle}>{label}</td>
+                                <td style={thTdStyle}>{address}</td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        ))}
     </div>
   );
 };
