@@ -1,8 +1,6 @@
-import { Download } from "lucide-react"; // Import the Download icon
-import React from "react";
+import { Download } from "lucide-react";
 
-// Import any brand assets you have
-import logoImage from "../../assets/color_logo.png"; // Update path as needed
+import logoImage from "../../assets/color_logo.png";
 
 export const BrandingKit = function BrandingKit() {
   return (
