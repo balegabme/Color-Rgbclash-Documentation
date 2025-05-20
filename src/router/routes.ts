@@ -1,3 +1,4 @@
+import { BrandingKit } from "@/pages/community/brandingKit";
 import { OfficialLinks } from "@/pages/community/officialLinks";
 import { EcoOverview } from "@/pages/economy/ecoOverview";
 import { HandmadeYieldBearingNfts } from "@/pages/economy/handmadeYieldBearingNfts";
@@ -62,7 +63,10 @@ export const routes = {
     },
     {
       title: "Community",
-      items: [{ title: "Official links", element: OfficialLinks }],
+      items: [
+        { title: "Official links", element: OfficialLinks },
+        { title: "Branding Kit", element: BrandingKit },
+      ],
     },
   ],
 };
