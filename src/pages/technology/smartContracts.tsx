@@ -43,8 +43,10 @@ export const SmartContracts: React.FC = () => {
     return typeof groupGameContracts === "object" ? groupGameContracts[variant] : undefined;
   };
 
-  // Filter out Faucet contracts
-  const filteredContracts = Object.values(Contracts).filter((contract) => contract !== Contracts.Faucet);
+  // Filter out Faucet and ColorToken contracts
+  const filteredContracts = Object.values(Contracts).filter(
+    (contract) => contract !== Contracts.Faucet && contract !== Contracts.ColorToken
+  );
 
   // Table styling
   const tableStyle: React.CSSProperties = {
