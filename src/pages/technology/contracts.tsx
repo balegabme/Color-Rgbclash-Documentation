@@ -1,7 +1,6 @@
 export enum Chains {
-  Base = 84532,
   Sei = 1329,
-  Sonic = 146,
+  Camp = 123420001114,
   Monad = 10143,
 }
 
@@ -41,40 +40,21 @@ export type GameVariant = SingleGameVariant | MultiGameVariant;
 export type Hex = `0x${string}`;
 
 export const contractAddresses: Partial<Record<Chains, Record<Contracts, Hex | Partial<Record<GameVariant, Hex>>>>> = {
-  [Chains.Base]: {
-    [Contracts.Faucet]: "0xB8E80F503B5128a49e7f52c11a596088b09be25c",
-    [Contracts.ColorNft]: "0x7dD064421eAeb39c36Ac969D98E2a90fd96766D3",
-    [Contracts.ColorNftPouch]: "0x11691C92c312ac5b312372378D539C893E73330C",
-    [Contracts.ColorToken]: "0xB7C2a762ac44201C7FFE3Fa9AC3286633d0F9258",
-    [Contracts.GroupGame]: {
-      [MultiGameVariant.Default3100]: "0x4CdEA3B3663A0AB26bF163975d88aF4Cbd8F99C6",
-      [MultiGameVariant.Default3101]: "0xC982CF7E6857a6b7aE813AA06Debaa3CC7607344",
-      [MultiGameVariant.Default6100]: "0x75899f8fC80462A099d5e98Ce6Cc91d3C4Ddf3bA",
-      [MultiGameVariant.Default6101]: "0xcaCe8a75ECE8eFc15b0D8d71bFcb3C0f0c4ed078",
-      [MultiGameVariant.Default10100]: "0x68695f1F2d827D866204854481e45bD1EfF66999",
-      [MultiGameVariant.Default10101]: "0x87F6f3061f8ABFF38c3Cef99d4e31beA6Fb8FE94",
-    },
-    [Contracts.SingleGame]: "0xAdaA6873af79Ef1e9d1Be33eC36BabDDd2123D2F",
-    [Contracts.SingleGameBubble]: "0xEe9Bf62ffE2209359D5c098b9E6530AA1fEc9f23",
-  },
-  [Chains.Sonic]: {
+  [Chains.Camp]: {
     [Contracts.Faucet]: "0xd1Ba71383eAbdBeD2552862eaf36fD38815B5693",
-    [Contracts.ColorNft]: "0xFe08D3578c5D84cD657a1BE47d8A8EdDb25Cc240",
-    [Contracts.ColorNftPouch]: "0x09358a6dd16922c3590Ec03e2469DF522E3C5B84",
+    [Contracts.ColorNft]: "0xdd2274147F61813a71c163Cc955Ea27df768fe0E",
+    [Contracts.ColorNftPouch]: "0x7757998A5F0747AB66397303327c0164DCBF4b11",
     [Contracts.ColorToken]: "0xB7C2a762ac44201C7FFE3Fa9AC3286633d0F9258",
     [Contracts.GroupGame]: {
-      [MultiGameVariant.Default3100]: "0xb0b9bde5966f378cd848c443C9a3207C98d57409",
-      [MultiGameVariant.Default3101]: "0x9515A7403d5cb3c2697250109d407a1E5ba0d77C",
-      [MultiGameVariant.Default3102]: "0x723D9AB3d868f38D333E7f1Ed60E4290c44edfaf",
-      [MultiGameVariant.Default6100]: "0xD854484B164726BED375009Ecf24fBF36E866C3c",
-      [MultiGameVariant.Default6101]: "0x865905640F0FF5DCcb1eFA88d09A3fda070755D2",
-      [MultiGameVariant.Default6102]: "0xc13314d126cba7447ac3b5ba24579244bdc02d61",
-      [MultiGameVariant.Default10100]: "0xD3FaB65D2Da392365B1Aede6Ab3ea59C43457137",
-      [MultiGameVariant.Default10101]: "0x33B5338719A7B8Ffe6D5A7dce3386e8Ad4fdB946",
-      [MultiGameVariant.Default10102]: "0xD496b5215ec01A456c33e2891780d4bfB60be9B2",
+      [MultiGameVariant.Default3100]: "0xD496b5215ec01A456c33e2891780d4bfB60be9B2",
+      [MultiGameVariant.Default3101]: "0x4cecAF543033aeDB215B6dC28f09D0b5f7Ab1655",
+      [MultiGameVariant.Default6100]: "0xf884cF2591148bD0bcd7D65315556e85d8bbfeA1",
+      [MultiGameVariant.Default6101]: "0x100Af4394cA324b4118Ae336386C9b3A1FC75a2E",
+      [MultiGameVariant.Default10100]: "0x96387D861eD678eF2907709b74cc21Cc9C22bC01",
+      [MultiGameVariant.Default10101]: "0x3f196D98a4157B6d30a65Aaaf7dA47FcCDA1e5A8",
     },
-    [Contracts.SingleGame]: "0x22fFFaa8a7A5E0183CB4CF154ADd9b790195b53a",
-    [Contracts.SingleGameBubble]: "0x776443D2c665953B824587eaF7744271a2d37834",
+    [Contracts.SingleGame]: "0x0b4955690550F87F1028420EA9E32bF129DeC4dF",
+    [Contracts.SingleGameBubble]: "0xBA9B17F67280DB191e9b541Bf08F26e9223fB9b8",
   },
   [Chains.Sei]: {
     [Contracts.Faucet]: "0xD6542FE56414ED52AfE5dBA77a2De0321E091756",

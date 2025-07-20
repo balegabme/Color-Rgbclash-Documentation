@@ -45,7 +45,7 @@ export const SmartContracts: React.FC = () => {
 
   // Filter out Faucet and ColorToken contracts
   const filteredContracts = Object.values(Contracts).filter(
-    (contract) => contract !== Contracts.Faucet && contract !== Contracts.ColorToken
+    (contract) => contract !== Contracts.Faucet && contract !== Contracts.ColorToken,
   );
 
   // Table styling
@@ -132,6 +132,7 @@ export const SmartContracts: React.FC = () => {
             </table>
           </div>
         ))}
+      <span className="text-sm text-icon-active mt-8">Last updated: 07.20.2025</span>
     </div>
   );
 };
