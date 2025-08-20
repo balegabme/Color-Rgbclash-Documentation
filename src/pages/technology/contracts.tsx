@@ -1,6 +1,6 @@
 export enum Chains {
   Sei = 1329,
-  Camp = 123420001114,
+  Camp = 484,
   Monad = 10143,
 }
 
@@ -42,19 +42,19 @@ export type Hex = `0x${string}`;
 export const contractAddresses: Partial<Record<Chains, Record<Contracts, Hex | Partial<Record<GameVariant, Hex>>>>> = {
   [Chains.Camp]: {
     [Contracts.Faucet]: "0xd1Ba71383eAbdBeD2552862eaf36fD38815B5693",
-    [Contracts.ColorNft]: "0xdd2274147F61813a71c163Cc955Ea27df768fe0E",
-    [Contracts.ColorNftPouch]: "0x7757998A5F0747AB66397303327c0164DCBF4b11",
+    [Contracts.ColorNft]: "0x66EC637541c4c26a3D649878dCd0485945549600",
+    [Contracts.ColorNftPouch]: "0x32B9d51Ce56774C2A251A1A0CFe1E599Bf88128A",
     [Contracts.ColorToken]: "0xB7C2a762ac44201C7FFE3Fa9AC3286633d0F9258",
     [Contracts.GroupGame]: {
-      [MultiGameVariant.Default3100]: "0xD496b5215ec01A456c33e2891780d4bfB60be9B2",
-      [MultiGameVariant.Default3101]: "0x4cecAF543033aeDB215B6dC28f09D0b5f7Ab1655",
-      [MultiGameVariant.Default6100]: "0xf884cF2591148bD0bcd7D65315556e85d8bbfeA1",
-      [MultiGameVariant.Default6101]: "0x100Af4394cA324b4118Ae336386C9b3A1FC75a2E",
-      [MultiGameVariant.Default10100]: "0x96387D861eD678eF2907709b74cc21Cc9C22bC01",
-      [MultiGameVariant.Default10101]: "0x3f196D98a4157B6d30a65Aaaf7dA47FcCDA1e5A8",
+      [MultiGameVariant.Default3100]: "0xCDD4B6A42264361AaE35d0a3F4c576d184c10481",
+      [MultiGameVariant.Default3101]: "0x53Fd200fB81F4eC3844dfaeD20B90383D1Fa0530",
+      [MultiGameVariant.Default6100]: "0x964Ad98fD08d1CfF67241dcfD657a4C790D2Eb94",
+      [MultiGameVariant.Default6101]: "0x94e4b317c356961E4ac87539edc1331572358a71",
+      [MultiGameVariant.Default10100]: "0x8a952e8189f386b3c39Ad108E99f3274D34F28Ee",
+      [MultiGameVariant.Default10101]: "0xA05B2E0659BB6F83E4b3E9682Fc457123A45A17E",
     },
-    [Contracts.SingleGame]: "0x0b4955690550F87F1028420EA9E32bF129DeC4dF",
-    [Contracts.SingleGameBubble]: "0xBA9B17F67280DB191e9b541Bf08F26e9223fB9b8",
+    [Contracts.SingleGame]: "0xb25Ef8643414e6bb29E9eF24E8fD7dC9115b26e1",
+    [Contracts.SingleGameBubble]: "0x1f5E4a0fFaB85E5BBa68f73f878117eD314e4452",
   },
   [Chains.Sei]: {
     [Contracts.Faucet]: "0xD6542FE56414ED52AfE5dBA77a2De0321E091756",
