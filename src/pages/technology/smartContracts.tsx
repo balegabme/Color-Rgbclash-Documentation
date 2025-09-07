@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -65,6 +66,21 @@ export const SmartContracts: React.FC = () => {
     backgroundColor: "#f9f9f9",
   };
 
+  // Helper to get block explorer URL
+  const getExplorerUrl = (chain: Chain, address: string | undefined) => {
+    if (!address) return "";
+    switch (chain) {
+      case "Camp":
+        return `https://camp.cloud.blockscout.com/address/${address}`;
+      case "Sei":
+        return `https://seitrace.com/address/${address}`;
+      case "Monad":
+        return `https://testnet.monadexplorer.com/address/${address}`;
+      default:
+        return "";
+    }
+  };
+
   return (
     <div style={{ padding: "1rem", fontFamily: "Arial, sans-serif" }}>
       <h4 className="font-bold mb-4">Smart Contracts</h4>
@@ -86,7 +102,21 @@ export const SmartContracts: React.FC = () => {
                   .map((contract) => (
                     <tr key={contract}>
                       <td style={thTdStyle}>{contract}</td>
-                      <td style={thTdStyle}>{getContractAddress(chain as Chain, contract as Contract) || "N/A"}</td>
+                      <td style={thTdStyle}>
+                        {(() => {
+                          const address = getContractAddress(chain as Chain, contract as Contract);
+                          if (!address) return "N/A";
+                          const explorerUrl = getExplorerUrl(chain as Chain, address);
+                          return explorerUrl ? (
+                            <a href={explorerUrl} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                              {address}
+                              <ExternalLink style={{ marginLeft: 4, width: 16, height: 16 }} />
+                            </a>
+                          ) : (
+                            address
+                          );
+                        })()}
+                      </td>
                     </tr>
                   ))}
                 <tr>
@@ -119,7 +149,20 @@ export const SmartContracts: React.FC = () => {
                             .map(({ label, address }) => (
                               <tr key={label}>
                                 <td style={thTdStyle}>{label}</td>
-                                <td style={thTdStyle}>{address}</td>
+                                <td style={thTdStyle}>
+                                  {(() => {
+                                    if (!address) return "N/A";
+                                    const explorerUrl = getExplorerUrl(chain as Chain, address);
+                                    return explorerUrl ? (
+                                      <a href={explorerUrl} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                                        {address}
+                                        <ExternalLink style={{ marginLeft: 4, width: 16, height: 16 }} />
+                                      </a>
+                                    ) : (
+                                      address
+                                    );
+                                  })()}
+                                </td>
                               </tr>
                             ))}
                         </tbody>
